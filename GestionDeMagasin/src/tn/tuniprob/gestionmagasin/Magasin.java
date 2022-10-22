@@ -1,6 +1,7 @@
 package tn.tuniprob.gestionmagasin;
 
 
+import tn.tuniprob.gestionproduit.ProduitFruit;
 import tn.tuniprob.gestionproduit.Produits;
 
 public class Magasin {
@@ -61,6 +62,17 @@ public class Magasin {
 		
 		return "Le magasin est id: "+ this.id + "\nNom: " + this.nom + "\nCapacite: " + this.getCapacite() + "\nAdresse: " + this.getAdresse() + "\nProduits: " + str; 
 	}
+	
+	public float calculStock() {
+		float stock = 0;
+		for (int i = 0; i < this.getCapacite(); i++) {
+			if (ensembleProduits[i] instanceof ProduitFruit) {
+				stock = ensembleProduits[i].getQuantité() + stock;
+			}
+				
+		}
+		return stock;
+	}
 
 	public int getId() {
 		return id;
@@ -109,5 +121,6 @@ public class Magasin {
 	public void setCapaciteEmp(int capaciteEmp) {
 		this.capaciteEmp = capaciteEmp;
 	}
+
 	
 }
